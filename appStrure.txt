@@ -27,3 +27,21 @@ cd myproject enter
 next to create django app in this prooject we will need to run this command 
 python3.8 manage.py startapp todoes   enter
 here is where model,url,admin files will be created for us
+
+after create model we need to save our model in created database todoDB
+we do it through these 3steps:
+
+python3.8 manage.py makemigrations todos  
+
+python3.8 manage.py sqlmigrate todos xxx  file you got eg 0001_initial.py after run makemigrations todos
+python3.8 manage.py migrate run this to save in database
+
+first we need to install this package django to work with postgres  pip3 install psycopg2-binary
+
+python3.8 manage.py sqlmigrate todos 0001
+BEGIN;
+--
+-- Create model Todo
+--
+CREATE TABLE "todos_todo" ("id" serial NOT NULL PRIMARY KEY, "content" text NOT NULL);
+COMMIT; 
