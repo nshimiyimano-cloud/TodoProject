@@ -1,0 +1,29 @@
+TodoProject
+|
++---todoes(app folder)
+|   |
+|   +------migrations(includes files related to migrations)
+|   |
+|   +------static
+|          |---todoes
+               |--styles.css
+      
+
+|    
+|
+|
+|
+|
+|
+|
+|
+|
+
+cd in env folder then source bin/activate
+
+to create project run:django-admin startproject myproject  enter
+cd myproject enter
+
+next to create django app in this prooject we will need to run this command 
+python3.8 manage.py startapp todoes   enter
+here is where model,url,admin files will be created for us
