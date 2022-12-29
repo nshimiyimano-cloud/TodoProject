@@ -12,5 +12,26 @@ def insert_todo_item(request:HttpRequest):
     todo.save()
     return redirect('/todos/list/')
 
+
+def delete_todo_item(request,todo_id):
+    todo_to_delete=Todo.objects.get(id=todo_id)
+    todo_to_delete.delete()       
+    return redirect('/todos/list/')
+
+def update_todo_item(request:HttpRequest,todo_id):
+    todo_to_update=Todo.objects.get(id=todo_id)
+    if request.method=='POST':
+        todo_to_update.content=request.POST['content']
+        todo_to_update.save()
+        return redirect('/todos/list/')
+        
+    else:
+        return render(request,'todos/edit_item.html',context={'todo_item':todo_to_update})
+        
+
+
+
+
+
     
 

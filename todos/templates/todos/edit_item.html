@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todos</title>
+    <title>Update Todo</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
@@ -27,21 +27,16 @@
 
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body">                       
 
-
-                        <ul class="list-group">
-
-                            <li class="list-group-item">
-
-                                <form action="{% url 'insert_todo_item' %}" method="post" autocomplete="off">
+                                <form action="{% url 'update_todo_item' todo_item.id %}" method="post" autocomplete="off">
                                     {% csrf_token %}
                                     <div class="input-group">
-                                        <input type="text" class="form-control" name="content">
+                                        <input type="text" class="form-control" name="content" value="{{todo_item.content}}"> <!---value="todo_item.content"-->
                                         <div class="input-group-append text-info">
                                             <span class="input-group-text bg-white py-0">
                                                 <button type="submit" class="btn btn-sm text-info">
-                                                    <i class="fa fa-plus-circle fa-lg"></i>
+                                                    Update
 
                                                 </button>
                                             </span>
@@ -49,38 +44,6 @@
                                     </div>
 
                                 </form>
-
-
-                            </li>
-
-                            {% for todo in todo_list %}
-                            <li class="list-group-item"> {{todo.content}}
-                            
-                                <form action="{% url 'delete_todo_item' todo.id %}" method="post" class="float-end d-inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn" title="remove item">
-                                        <i class="far fa-trash-alt fa-lg float-end text-danger"></i>
-                                    </button>
-                                </form>
-
-
-                                
-                              <a title="Edit item" class="btn float-end d-inline" href="{% url 'update_todo_item' todo.id %}"><i class="fa fa-pencil-alt fa-lg text-primary"></i> </a>
-                            
-
-                            </li>
-                           
-
-                                {% empty %}
-
-                            <li class="list-group-item">
-                                <span class="font-italic">No todo Item found</span>
-                            </li>                        
-
-                            {% endfor %}
-
-                        </ul>
-
                     </div>
 
 
